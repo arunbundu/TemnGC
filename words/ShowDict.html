@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleShowDict.css">
+    <title>Dictionary</title>
+</head>
+<body>
+    <div class="container">
+         <h1>h'ə́hkəfə t̀ʌ'θemnɛ</h1>
+        <label for="filterInput">'θiθ mə́'βal 'hma:</label>
+		
+		<select id="filterType" onchange="filterWords()" style="border-radius: 5px;" class = "firstLine">
+             <option value="ḱ'θɛlma">ḱ'θɛlma</option>
+            <option value="kə́'ceɱp">kə́'ceɱp</option>
+        </select>
+		
+        <input type="text" id="filterInput" oninput="filterWords()" placeholder="'θɛnhś">
+		
+        <button onclick="toggleOrder()" style="border-radius: 5px;" class = "firstLine">'tʌmʌr t́'θɛlma ɔ'hrɔɪkθə-q</button>
+        <ul id="wordList"></ul>
+		
+    </div>
+	
+	<!-- Overlay container -->
+    <div id="overlay" style="display: none;">
+    </div>
+	
+	<button id="scrollToTopBtn" onclick="scrollToTop()">&#9650;</button>
+
+	<div id="wordCount">ə́ŋ'mɔlɔ 'hŋa t́'θɛlma: 0</div>
+	
+    <script src="DICTJson.json"></script>
+	<script src="overlay.js"></script>
+	<script src="scroll.js"></script>
+    <script src="scriptShowDict.js"></script>
+</body>
+</html>
+
+
+
+	
+
