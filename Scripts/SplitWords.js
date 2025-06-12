@@ -1,5 +1,4 @@
 
-
 var WordSplitter = (function () {
 
     function seperateOpenAndClosedWordClasses(book) {
@@ -27,27 +26,50 @@ var WordSplitter = (function () {
 
         return filtered;
     }
+	
+	function dirtyToClean(string){
+		
+		var newString=string;
+		var dirtyAndClean=[
+		["’", "'"],
+		["‘", "'"],
+		["'h", "'ɥ"],
+		["h́", "ħ"],
+		['\u03F4', "θ"] //replace fat θ
+		];
+		
+		dirtyAndClean.forEach((item) =>{
+			
+			newString = newString.replaceAll(item[0],item[1]);
+		
+			
+		});
+	
+		return newString;
+	}
 
     function wordCleaner(word) {
         //expects a string
         var mixedRaw = word.split("");
         mixedRaw = HelperFunctions.replaceAllOccurrences(mixedRaw, "\n", '<br/> ');
-
-        mixedRaw = mixedRaw.join("");
+		mixedRaw = mixedRaw.join("");
+		
+		
+		mixedRaw = dirtyToClean(mixedRaw);
+		
+		mixedRaw = mixedRaw.replaceAll('<br/> ', " ");
+		
+		mixedRaw = mixedRaw.split(" ");
+		mixedRaw = HelperFunctions.trimWordsAtMarkers(mixedRaw, ["-q"]);
+		mixedRaw = mixedRaw.join(" ");
         //console.log(mixedRaw);
-        mixedRaw = mixedRaw.replaceAll("’", "'");
-        mixedRaw = mixedRaw.replaceAll("‘", "'");
-        mixedRaw = mixedRaw.replaceAll("'h", "'ħ");
-        mixedRaw = mixedRaw.replaceAll("h́", "ɦ");
-        mixedRaw = mixedRaw.replaceAll('\u03F4', "θ"); //replace fat θ
-        mixedRaw = mixedRaw.replaceAll('<br/> ', " ");
-
         mixedRaw = HelperFunctions.removeUnapprovedCharacters(
                 mixedRaw, utterances.getTemneLetters());
 				
 		return mixedRaw;
 
     }
+	
 
     return {
 

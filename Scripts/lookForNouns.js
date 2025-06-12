@@ -1,16 +1,13 @@
-
-
-
 var lookForNouns = (function () {
 
     function definiteNouns(words) {
-		//console.log('H');
+		//console.log(words);
         var definteClasses = [
             "áŋ'", "mə́'", "nə́'",
             "rə́'", "tə́'", "də́'",
-            "ɔ́'", "kə́'", "ɛ́'", "ə́ŋ'",
-            "ró'", "nɔ́'", "dó'"];
-        return HelperFunctions.filterWordsContainingText(words, definteClasses);
+            "ɔ́'", "kə́'", "ɛ́'", "ə́ŋ'"];
+			//console.log(HelperFunctions.filterWordsContainingText(words, definteClasses))
+        return HelperFunctions.filterWordsContainingTextByIndex(words, definteClasses,0);
     }
 
     function indefiniteNouns(words) {
@@ -25,8 +22,10 @@ var lookForNouns = (function () {
 
     function classlessNouns(words) {
         //expects a string array
+		//console.log(words);
         return HelperFunctions.filterWordsContainingTextByIndex(words,
-            ["h'"], 0);
+            ["h'","nɔ́'",
+            "ró'", "dó'"], 0);
     }
 
     function nameNouns(words) {
@@ -122,7 +121,7 @@ var lookForNouns = (function () {
         newArr = [];
 
 		var words2= JSON.parse(JSON.stringify(words));
-
+		//console.log(words);
         for (var i = 0; i < words2.length; i++) {
             //take in all the utterances
             for (var q = 1; q < words2[i].length; q++) { //take in all the words

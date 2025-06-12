@@ -6,7 +6,7 @@ var lookForAdjectives = (function () {
     function getAdjectives(words) {
         var raw = HelperFunctions
             .filterWordsContainingTextWithInterval
-            (words, ["'ħ"], 0, 4);
+            (words, ["'ɥ"], 0, 4);
 
         return {
             adjectives: utterances.getUtterances(raw.nuvo),

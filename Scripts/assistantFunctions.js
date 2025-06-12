@@ -3,6 +3,8 @@
 var HelperFunctions = (function () {
 
     function filterWordsContainingText(array1, searchArray) {
+		//expects an array not a string
+		//console.log(array1);
         var newArray = [];
         var tempArr = JSON.parse(JSON.stringify(array1));
         for (var i = 0; i < tempArr.length; i++) {
@@ -15,7 +17,7 @@ var HelperFunctions = (function () {
                 }
             }
         }
-        //console.log(newArray[0],newArray);
+        //console.log( newArray, tempArr);
         return {
             nuvo: newArray,
 
@@ -357,6 +359,17 @@ var HelperFunctions = (function () {
         // Return the modified array
         return array;
     }
+	
+	function trimWordsAtMarkers(wordArray, markers) {
+    return wordArray.map(word => {
+        for (let marker of markers) {
+            if (word.includes(marker)) {
+                return word.substring(0, word.indexOf(marker));
+            }
+        }
+        return word;
+    });
+}
 
     function separateIndexes(arr, charactersToCheck) {
         const containsCharacter = [];
@@ -435,6 +448,8 @@ var HelperFunctions = (function () {
         exists: exists,
 
         splitArrayInHalf: splitArrayInHalf,
+		
+		trimWordsAtMarkers: trimWordsAtMarkers,
 
         copyString: copyString,
 

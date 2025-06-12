@@ -45,6 +45,12 @@ var lookForPronouns = (function () {
             "plurality": "singular",
             "person": "third",
             "describe": "subject"
+        },{
+            "name": "ə'",
+            "class": "",
+            "plurality": "singular",
+            "person": "third",
+            "describe": "subject"
         }, {
             "name": "pʌ'",
             "class": "",
@@ -190,6 +196,12 @@ var lookForPronouns = (function () {
             "person": "first",
             "describe": "subjectAccusational"
         }, {
+            "name": "sā",
+            "class": "",
+            "plurality": "plural",
+            "person": "first",
+            "describe": "subjectAccusational"
+        },{
             "name": "na'",
             "class": "",
             "plurality": "plural",
@@ -633,7 +645,13 @@ var lookForPronouns = (function () {
             "plurality": "Plural",
             "person": "third",
             "describe": "locational/closeRelativePositional"
-        }, {
+        },{
+            "name": "ədəŋ",
+            "class": "də́'/d̀ʌ'/dó'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": "locational/closeRelativePositional"
+        },  {
             "name": "ənəŋ",
             "class": "nə́'/ǹʌ'",
             "plurality": "Plural",
@@ -731,6 +749,12 @@ var lookForPronouns = (function () {
             "describe": "objectivalPronounPosessives/objectivalPronounSingular/objectivalPronounThirdPerson"
         },  {
             "name": "ŋaŋ",
+            "class": "ə́ŋ'/ə̀",
+            "plurality": "Singular",
+            "person": "third",
+            "describe": "objectivalPronounPosessives/objectivalPronounSingular/objectivalPronounThirdPerson"
+        },{
+            "name": "yaŋ",
             "class": "ə́ŋ'/ə̀",
             "plurality": "Singular",
             "person": "third",
@@ -1498,13 +1522,37 @@ var lookForPronouns = (function () {
             "person": "undefined",
             "describe": "undefined"
         }, {
-            "name": "nāŋ'h",
+            "name": "mīŋ",
             "class": "undefined",
             "plurality": "undefined",
             "person": "undefined",
             "describe": "undefined"
         }, {
-            "name": "ŋā'h",
+            "name": "mūŋ",
+            "class": "undefined",
+            "plurality": "undefined",
+            "person": "undefined",
+            "describe": "undefined"
+        }, {
+            "name": "sā",
+            "class": "undefined",
+            "plurality": "undefined",
+            "person": "undefined",
+            "describe": "undefined"
+        }, {
+            "name": "kɔ̄ŋ",
+            "class": "undefined",
+            "plurality": "undefined",
+            "person": "undefined",
+            "describe": "undefined"
+        }, {
+            "name": "nā",
+            "class": "undefined",
+            "plurality": "undefined",
+            "person": "undefined",
+            "describe": "undefined"
+        },  {
+            "name": "ŋā",
             "class": "undefined",
             "plurality": "undefined",
             "person": "undefined",

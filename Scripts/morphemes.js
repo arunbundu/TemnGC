@@ -1,26 +1,29 @@
 
-
-
 var morphemes = (function () {
 
     function getWhole(words) {
         //expects a 2d array
-
+//console.log(words);
         var temp = "";
         for (var i = 0; i < words.length; i++) { //collect the utterances
 
             for (var q = words[i].length - 1; q > 1; q--) {
                 //fetch the class and attach it to every tail word
-
-                if (words[i][1].indexOf("'h") > -1 && words[i][1].indexOf("'h") < 4 ) {
+                if (words[i][1].indexOf("'ɥ") > -1 && words[i][1].indexOf("'ɥ") < 4 ) {
                     //for tail adjectives
                     temp = words[i][1].
-                        substr(0, words[i][1].indexOf("'") + 1) + "ħ" +
+                        substr(0, words[i][1].indexOf("'") + 1) + "ɥ" +
                         words[i][q];
+                    words[i][q] = temp;
+					//console.log(temp);
+
+                } else if(words[i][1].indexOf("\u0300")==1){
+                    temp =  words[i][q].charAt(0)+"\u0300"+
+                        words[i][q].substring(1);
+
                     words[i][q] = temp;
 
                 } else {
-
                     temp = words[i][1].
                         substr(0, words[i][1].indexOf("'") + 1) +
                         words[i][q];
@@ -29,15 +32,17 @@ var morphemes = (function () {
 
                 }
 
+
             }
 
         }
+		//console.log(words);
         return words;
     }
 
     function getAffixes(words) {
         //expects a 2d array
-		
+		//console.log(words);
         var temp, temp2;
         var tooth;
         var results = [];
@@ -47,7 +52,7 @@ var morphemes = (function () {
 
             for (var q = words[i].length - 1; q > 0; q--) {
 
-                //console.log(words[i][q]);
+                //console.log(words[i][q].indexOf("\u0300"));
                 //fetch the words after the apostrophe
 				if(words[i][q].indexOf("'") >-1){
 					
@@ -57,6 +62,7 @@ var morphemes = (function () {
 				}else if(words[i][q].indexOf("\u0300") ==1){
 					
 					temp = words2[i][q];
+					//console.log(temp);
 					
 				}
                 
@@ -71,21 +77,12 @@ var morphemes = (function () {
                 //console.log(temp, wordParts);
                 //error handeling
                 if (typeof wordParts.old[0] === "undefined") {
-                    //console.log(wordParts);
-                    words2[i][0] = '';
-                    words2[i][q] = {
-                        'whole': 'n/A',
-                        'root': 'n/A',
-                        'affixes': 'n/A',
-                        'order': 0,
-                        'speechClass': "n/A"
-                    }
-                    continue;
+                   //console.log(wordParts, words2);
+					wordParts.old=["'kɔ"]
                 }
 
                 //return the hs back to their original form
-                wordParts.old[0] = wordParts.old[0].replace("'ħ", "'h");
-                wordParts.old[0] = wordParts.old[0].replace("ɦ", "h́");
+                wordParts.old[0] = wordParts.old[0].replace("'ɥ", "'h");
                 wordParts.nuvo = HelperFunctions.arrReplaceAll(wordParts.nuvo, "'ə́", "");
                 wordParts.nuvo = HelperFunctions.replaceAllOccurrences(wordParts.nuvo, "'", "");
                 //console.log(wordParts);
@@ -116,21 +113,27 @@ var morphemes = (function () {
     }
 
     function cleanAffixes(word) {
+		//console.log(word);
+		var word2 = JSON.parse(JSON.stringify(word));
         //expects an object
-        var temp = word.whole;
+        var temp = word2.whole;
 
-        for (var i = 0; i < word.affixes.length; i++) {
+        for (var i = 0; i < word2.affixes.length; i++) {
             //check if the affix is in the word
-            if (temp.indexOf(word.affixes[i]) > -1) {
+            if (temp.indexOf(word2.affixes[i]) > -1) {
                 //check for affixes
-                if ((temp.indexOf(word.affixes[i]) < temp.indexOf(word.root[0]) &&
-                        temp.indexOf(word.affixes[i]) > 0) || word.root[0].length < 1) {
+                if (temp.indexOf(word2.root[0]) < 0 && i ==0 ) {
 
-                    word.affixes[i] += "h";
+                    word2.affixes[i] += "h";
                     //suffixes
-                } else if (temp.indexOf(word.affixes[i]) > temp.indexOf(word.root[0])) {
+                } else if ((temp.indexOf(word2.affixes[i]) < temp.indexOf(word2.root[0]) &&
+                        temp.indexOf(word2.affixes[i]) > 0) || word2.root[0].length < 1) {
 
-                    word.affixes[i] = "h" + word.affixes[i];
+                    word2.affixes[i] += "h";
+                    //suffixes
+                }else if (temp.indexOf(word2.affixes[i]) > temp.indexOf(word2.root[0])) {
+
+                    word2.affixes[i] = "h" + word2.affixes[i];
                     //prefixes
                 }
 
@@ -138,7 +141,7 @@ var morphemes = (function () {
 
         }
 
-        return word;
+        return word2;
     }
 
     function getMorphemes(words) {
@@ -146,7 +149,6 @@ var morphemes = (function () {
         var mixed = getWhole(words);
 
         mixed = getAffixes(mixed);
-
         //mixed[a] == utter level
         //mixed[a][b] == words
         //cleanAffixes
@@ -155,7 +157,7 @@ var morphemes = (function () {
             for (var w = 1; w < mixed[q].length; w++) {
                 //filter throught the words
 
-                cleanAffixes(mixed[q][w]); //clean each word object
+                mixed[q][w] = cleanAffixes(mixed[q][w]); //clean each word object
 
             }
 

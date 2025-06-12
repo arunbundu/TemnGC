@@ -32,10 +32,11 @@ function displayWords(words) {
     // Sort words using the custom letter order
     const sortedWords = words.sort((a, b) => {
         // Extract and convert the words to lowercase for case-insensitive sorting
-        const wordA = a["mə́'βal"].toLowerCase().replace("'h", "")
-            .replace("h'", "").replace("ɸ", "").replace("h́", "ɸ").replace("h", "");
-        const wordB = b["mə́'βal"].toLowerCase().replace("'h", "")
-            .replace("h'", "").replace("ɸ", "").replace("h́", "ɸ").replace("h", "");
+        const wordA = a["koh 'yi ɛ́'sikra à?"].toLowerCase().replace("'h", "")
+            .replace("h'", "").replace("ɸ", "").replace("h́", "ɸ").replace("h", "").replace("*'", "");
+        
+		const wordB = b["koh 'yi ɛ́'sikra à?"].toLowerCase().replace("'h", "")
+            .replace("h'", "").replace("ɸ", "").replace("h́", "ɸ").replace("h", "").replace("*'", "");
 
         // Compare each character in the words based on the custom letter order
         for (let i = 0; i < Math.min(wordA.length, wordB.length); i++) {
@@ -62,7 +63,7 @@ function displayWords(words) {
         const orderNumber = decimalToBase20(index+1) + " ";
 
         // Set the inner HTML of the <li> element, displaying the word and its meaning
-        li.innerHTML = `<strong>${orderNumber}${entry["mə́'βal"].replace("*'h","'h")}:</strong> ${entry["kə́'yiɪkliʂ"]}`;
+        li.innerHTML = `<strong>${orderNumber}${entry["koh 'yi ɛ́'sikra à?"].replace("*'h","'h")}:</strong> ${entry["koh k̀ʌ'yiɪkliʂ ḱ'θɛlma kʌ'yema-fɔf à?"]}`;
 
         // Add a click event listener to the <li> element to open the overlay on click
         li.addEventListener('click', function () {
@@ -81,9 +82,9 @@ function filterWords() {
 
     const filteredWords = dictionary.filter(entry => {
         if (filterType === "ḱ'θɛlma") {
-            return entry["mə́'βal"].toLowerCase().includes(filterText);
+            return entry["koh 'yi ɛ́'sikra à?"].toLowerCase().includes(filterText);
         } else if (filterType === "kə́'ceɱp") {
-            return entry["kə́'yiɪkliʂ"].toLowerCase().includes(filterText);
+            return entry["koh k̀ʌ'yiɪkliʂ ḱ'θɛlma kʌ'yema-fɔf à?"].toLowerCase().includes(filterText);
         }
     });
 

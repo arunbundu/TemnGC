@@ -15,6 +15,7 @@ var loneAffix = (function () {
     }
 
     function getAffixes(words) {
+		//console.log(words);
 
         var newArr = [];
 
@@ -41,10 +42,12 @@ var loneAffix = (function () {
     function fixLoneAffixes(list) {
 
         list.forEach(function (index) {
-           // console.log(index.replace("\u0304", ""));
-            goFetch.getOnline([index, index.replace("\u0304", "")], url).then(res => {
+			
+           console.log(HelperFunctions.removeCharacters(index, ["\u0304","-q"]));
+		
+            goFetch.getOnline([index, HelperFunctions.trimWordsAtMarkers(words, ["\u0304","-q"])], url).then(res => {
 
-                //console.log(res);
+                console.log(res);
                 if (res[0][0].rows.length < 1 &&
                     res[1][0].rows.length < 1 &&
                     res[2][0].rows.length < 1 &&

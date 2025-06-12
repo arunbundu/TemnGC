@@ -182,4 +182,15 @@ span{display: inline;}
   .highlight, .highlighted {
     transition: background-color 0.5s;
   }
+  
+  
+.noun-highlight { background-color: #99ffcc; }
+.verb-highlight { background-color: #9999ff; }
+.adjective-highlight { background-color: #ad4809; }
+.pronoun-highlight { background-color: #66ff66; }
+.conjunction-highlight { background-color: #4287f5; }
+.loneletter-highlight { background-color: #669999; }
+.loneaffix-highlight { background-color: #cc33ff; }
+.notindict-highlight { background-color: yellow; }
+
 

@@ -15,11 +15,11 @@ function openOverlay(entry, index) {
     // Create elements for the content
     const heading = document.createElement('h2');
     const orderNumber = decimalToBase20(index + 1) + " ";
-    heading.innerHTML = orderNumber + "<br>" + entry["mə́'βal"].replace("*'h","'h") +
-        ", " + entry["mə́'βal pepih p'θas 'hŋin"];
+    heading.innerHTML = orderNumber + "<br>" + entry["koh 'yi ɛ́'sikra à?"].replace("*'h","'h") +
+        ", " + entry["toh ma'fɔf pepih ɛ'hβəθi à?"];
 
     const paragraph = document.createElement('p');
-    paragraph.textContent = entry["kə́'yiɪkliʂ"];
+    paragraph.textContent = entry["koh k̀ʌ'yiɪkliʂ ḱ'θɛlma kʌ'yema-fɔf à?"];
 
     // Close button
     const closeButton = document.createElement('button');

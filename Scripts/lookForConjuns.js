@@ -15,7 +15,7 @@ var lookForConjunctions = (function () {
     var greetings = ["ʂɛnɛh", "sɛkɛh", "panɛmoh", "piyarih", "mamuh", "θoɪθoh"];
     var responses = ["ādeh", "ɪkoh", "iyoh", "momoh", "marih", "nāyēh", "nāh", "āŋ", "yawoh","owoh"];
     var questionatives = ["koh", "toh", "nɛh", "mɔlɔh", "iyah", "kɛnɛh", "dekeh", "rekeh", "yoh"];
-    var loneFunctionatives = ["yaθih", "θāh", "təh", "ŋah", "ɪgɛh", "kkr:", "tkr:", "kkr:", "mah", "θonɔh", "bioh", "mɔ̄dɔh", "ɪnaŋ", "iyāh", "ɛŋ", "wɔyaŋ"];
+    var loneFunctionatives = ["yaθih", "θāh", "təh", "ŋah", "ɪgɛh", "kkr:", "tkr:", "kkr:", "mah", "θonɔh", "bioh", "mɔ̄dɔh", "ɪnaŋ", "iyāh", "wɔyaŋ"];
 
     conjunctions = conjunctions.concat(greetings, responses, questionatives, loneFunctionatives);
 
@@ -41,9 +41,10 @@ var lookForConjunctions = (function () {
 
     function getConjunctions(words) {
         //console.log(words);
+		
         var temp = HelperFunctions.
-            findCommonAndDifferentElements(words, allConjun());
-
+            findCommonAndDifferentElements(HelperFunctions.trimWordsAtMarkers(words, ["-q"]), allConjun());
+ 
         return {
             conjuns: temp.common,
             left: temp.different

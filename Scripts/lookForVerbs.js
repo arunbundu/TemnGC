@@ -8,13 +8,13 @@ var lookForVerbs = (function () {
         subjectPronum = HelperFunctions.creatArrayFromObjectProperty(subjectPronum, "name")
             //console.log(book);
             return HelperFunctions.filterWordsContainingTextByIndex_WithIgnore
-            (book, subjectPronum, 0, "'ħ");
+            (book, subjectPronum, 0, "'ɥ");
     }
 
     function genVerbs(book) {
         //expects a string array
         return HelperFunctions.filterWordsContainingTextByIndex_WithIgnore
-        (book, ["'"], 0, "'ħ");
+        (book, ["'"], 0, "'ɥ");
     }
 
     function infiniteVerbs(book) {

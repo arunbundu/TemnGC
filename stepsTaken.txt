@@ -1,0 +1,27 @@
+go get all the raw words and parse them into boxes, using the space as a separator
+
+Step 1: Display and Activate Words
+
+Step 2: Clean and Split Input
+
+Step 3: Classify Words into Open and Closed Class
+
+Detect and Colour-Code nouns
+
+verbs
+
+Adjectives
+
+Pronouns
+
+Conjunctions
+
+LoneLetter
+
+LoneAffix
+
+ Step 6: Fetch Dictionary Meanings
+
+Fix Lone Affixes
+
+When a verb is just prefixes ie 'téhθá, default to the word tʌkʌ'kɔhnɛ́

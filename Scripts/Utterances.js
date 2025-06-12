@@ -9,20 +9,21 @@ var utterances = (function () {
         "ɱ", "u", "l", "β", "f",
         "ɔ", "k", "w", "x", "ɛ", "z",
         "c", "g", "ʌ", "y", "p", "ʂ",
-        "ə", "h́", "ʒ", "v", "h",
+        "ə", "ħ", "ʒ", "v", "h",
         "-", "q", "\u0301",
         "\u0300", "\u0305", "\u0020", "\u0304",
-        "'", "ħ", "ɦ"];
+        "'", "ɥ"];
 
     var oldColour = "";
 
     let overHover = function () {
         // aprantly who ever class the function gets to be called "this"
-        if (this.className == "highlight") {
+        if (this.className =="highlight") {
             oldColour = this.style.backgroundColor;
             //console.log(oldColour);
             this.style.backgroundColor = 'red';
-        } else if (this.className == "highlighted") {
+			
+        } else if (this.classList.contains("highlighted")) {
             oldColour = this.style.backgroundColor;
             //console.log(oldColour);
             this.style.backgroundColor = '#bac7db';
@@ -49,7 +50,7 @@ var utterances = (function () {
         for (var i = 0; i < words.length; i++) {
             //collect the word and break it
             tempStr = words[i].split("-");
-            tempUtter.push(words[i].replace("'ħ", "'h").replace("ɦ", "h́")); // save the word signature
+            tempUtter.push(WordSplitter.wordCleaner(words[i])); // save the word signature
 
             for (var q = 0; q < tempStr.length; q++) {
 
@@ -126,7 +127,7 @@ var utterances = (function () {
             }
 
         }
-
+		//console.log(temp);
         return newArr;
     }
 
@@ -141,80 +142,69 @@ var utterances = (function () {
         return newArr;
     }
 
-    function colourCode(section, utterances, sClass = ".highlight") {
-        // expects array
-        var CurrentSpan;
-        var temp = "";
-        var temp2 = "";
-		
-		if(typeof section === "undefined"){return;}
 
-        CurrentSpan = document.querySelectorAll("span" + sClass);
+	
+	function colourCode(section, utterances, sClass = ".highlight") {
+    if (typeof section === "undefined") return;
+	
+    const spanElements = document.querySelectorAll("span" + sClass);
 
-        CurrentSpan.forEach(function (span) {
-
-            for (var i = 0; i < utterances.length; i++) {
-
-                //clean up both inputs fro processing
-                temp = WordSplitter.wordCleaner(span.innerText);
-                temp = temp.replace(/\s/g, "");
-
-                temp2 = WordSplitter.wordCleaner(utterances[i]);
-
-                
-                if (temp == temp2) {
-
-                    // Perform desired operations on the selected span element here
-					//console.log(section,i, temp, temp2);
-                    switch (section) {
-                    case "Noun":
-					//console.log(section,i, temp, temp2);
-                        span.style.backgroundColor = "#99ffcc";
-
-                        span.id = "noun" + i;
-                        break;
-                    case "Verb":
-                        span.style.backgroundColor = "#9999ff";
-
-                        span.id = "verb" + i;
-                        break;
-                    case "Adjective":
-                        span.style.backgroundColor = "#ad4809";
-
-                        span.id = "adjective" + i;
-                        break;
-                    case "NotInDict":
-                        span.style.backgroundColor = "yellow";
-                        break;
-                    case "Pronoun":
-                        span.style.backgroundColor = "#66ff66";
-
-                        span.id = "pronoun" + i;
-                        break;
-                    case "Conjunction":
-                        span.style.backgroundColor = "#4287f5";
-
-                        span.id = "conjunction" + i;
-                        break;
-                    case "Lone Letter":
-                        span.style.backgroundColor = "#669999";
-
-                        span.id = "loneLetter" + i;
-                        break;
-                    case "Lone Affixes":
-                        span.style.backgroundColor = "#cc33ff";
-
-                        span.id = "loneAffix" + i;
-                        break;
-
-                    }
-                    span.className = "highlighted";
-                }
-
-            }
-        });
-
+    // Preprocess utterances into a Map for fast lookups
+    const utteranceMap = new Map();
+    for (let i = 0; i < utterances.length; i++) {
+        let cleanUtterance = WordSplitter.wordCleaner(utterances[i]).replace(/\s/g, "");
+		//console.log(cleanUtterance );
+        utteranceMap.set(cleanUtterance, i);
     }
+	
+
+    spanElements.forEach(span => {
+        let cleanSpan = WordSplitter.wordCleaner(span.innerText).replace(/\s/g, "");
+		
+        if (utteranceMap.has(cleanSpan)) {
+            let i = utteranceMap.get(cleanSpan);
+			
+			span.classList.remove("notindict-highlight");
+            // Optional: use classList to apply a class instead of inline styles
+            switch (section) {
+                case "Noun":
+                    span.classList.add("noun-highlight");
+                    span.id = "noun" + i;
+                    break;
+                case "Verb":
+                    span.classList.add("verb-highlight");
+                    span.id = "verb" + i;
+                    break;
+                case "Adjective":
+                    span.classList.add("adjective-highlight");
+                    span.id = "adjective" + i;
+                    break;
+                case "Pronoun":
+                    span.classList.add("pronoun-highlight");
+                    span.id = "pronoun" + i;
+                    break;
+                case "Conjunction":
+                    span.classList.add("conjunction-highlight");
+                    span.id = "conjunction" + i;
+                    break;
+                case "Lone Letter":
+                    span.classList.add("loneletter-highlight");
+                    span.id = "loneLetter" + i;
+                    break;
+                case "Lone Affixes":
+                    span.classList.add("loneaffix-highlight");
+                    span.id = "loneAffix" + i;
+                    break;
+                case "NotInDict":
+                    span.classList.add("notindict-highlight");
+                    break;
+            }
+
+            span.classList.add("highlighted");// override base class
+        }
+    });
+}
+
 
     return {
         getUtterances: getUtterances,
@@ -228,3 +218,102 @@ var utterances = (function () {
     }
 
 })();
+
+
+/**
+Here are the **main steps** carried out by the `utterances` module:
+
+---
+
+### 🔠 1. **Store All Temne Letters**
+
+* Lists all characters valid in Temne (including special characters, combining accents, and spaces).
+
+---
+
+### 🧠 2. **Handle Mouse Hover Events**
+
+* Defines what happens when the mouse hovers **over** or **out of** a highlighted word:
+
+  * Temporarily changes background color to help with interactivity.
+
+---
+
+### 🗣️ 3. **Break Words into Utterances**
+
+* `getUtterances(words)`:
+
+  * Takes an array of words.
+  * Splits compound words using hyphens (`-`).
+  * Ignores some cases involving the letter "q".
+  * Calls a **morpheme processor** to analyze word structure (roots, affixes, etc.).
+  * Returns morpheme-analyzed structures.
+
+---
+
+### 🖼️ 4. **Display Highlighted Words in a Div**
+
+* `displayUtterances(div)`:
+
+  * Gets the first 5000 characters from a `div`.
+  * Splits the text into words.
+  * Wraps each word in a `<span class="highlight">...</span>` for styling and interaction.
+  * Inserts this back into the `div`.
+
+---
+
+### 🖱️ 5. **Activate Mouse Interactivity**
+
+* `activateDeadUtterances()`:
+
+  * Attaches mouseover and mouseout events to all `.highlight` spans to trigger color effects.
+
+---
+
+### 🧩 6. **Extract Morpheme Info**
+
+* `crack(utterances)`:
+
+  * For each utterance (a broken-down word):
+
+    * Extracts:
+
+      * `sign`: original word signature
+      * `root`: root of the word
+      * `affixes`: any prefixes/suffixes
+      * `order`: affix order
+      * `speechClass`: grammatical class
+    * Returns a flat array of these items.
+
+---
+
+### 🧱 7. **Extract Original Word Forms**
+
+* `crackWholes(utterances)`:
+
+  * Returns just the original "sign" or whole form of each analyzed word.
+
+---
+
+### 🎨 8. **Apply Color Codes by Word Type**
+
+* `colourCode(section, utterances, sClass)`:
+
+  * Matches each span in the DOM to words in a provided list.
+  * Applies a color and ID based on the grammatical type:
+
+    * **Noun**: light green
+    * **Verb**: light purple
+    * **Adjective**: dark orange
+    * **Pronoun**: bright green
+    * **Conjunction**: blue
+    * **Lone Letter**: teal
+    * **Lone Affix**: violet
+    * **NotInDict**: yellow
+  * Changes `className` from `highlight` to `highlighted`.
+
+---
+
+Let me know if you want this turned into a flow diagram or paired with the other part you sent earlier.
+
+**/
