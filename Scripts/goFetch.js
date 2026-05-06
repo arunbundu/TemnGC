@@ -3,6 +3,9 @@ const singular = "koh 'yi ɛ́'sikra à?";
 const plural = "toh ma'fɔf pepih ɛ'hβəθi à?";
 const affClassi = "ḱ'θɛlma əke kʌ'ba ə̀'βəphʌ́r ì?";
 const place = "koh k̀ʌ'tʌp kah t́'θɛlma 'hkə əke à?";
+const notInDict = [];
+var uniqueArray ;
+
 
 var goFetch = (function () {
 
@@ -312,7 +315,7 @@ var goFetch = (function () {
                     newArr.push(cracked2[a]);
                     continue;
                 }
-				
+				//console.log(cracked[a].affixes);
                 cracked2[a].affixes = []; // clean out this section so you can fll with all the contenders
                 for (var b = 0; b < cracked[a].affixes.length; b++) { //get the affixes
                     //and make sure that prefixes are splelled correctly
@@ -334,12 +337,12 @@ var goFetch = (function () {
                     then(res => {
 					
                        temp = crackJsonForAffix(res);
-					   //console.log(res);
+					   //console.log(res,temp);
                         if (temp.length < 1) { // for affixes that do not exist, please reassign the word use
 
                             cracked2[a].use = "NEW";
                             newArr.push(cracked2[a]);
-							console.log(cracked2[a]);
+							
                         } else { // insert all the affixes that esixt
 
                             cracked2[a].affixes = cracked2[a].affixes.concat(temp);
@@ -467,7 +470,8 @@ var goFetch = (function () {
                 
 				//console.log(words[i]);
                 utterances.colourCode("NotInDict", [words[i].sign], ".highlighted");
-
+				notInDict.push( utterances.sign);
+				
             } else if (words[i].use == "SAME" && words[i].order >= 0) {
                 
                 utterances.colourCode(words[i].speechClass, [words[i].sign], ".highlighted");
@@ -476,7 +480,8 @@ var goFetch = (function () {
             }
 
         }
-
+		
+	
     }
 
 
@@ -498,6 +503,9 @@ var goFetch = (function () {
 
 
 	function normalizeWord(word) {
+		if(typeof word != "string"){
+			return "";
+		}
 	  return word.replace("*","");
 	}
 	
@@ -511,7 +519,7 @@ var goFetch = (function () {
 	}
 
 
-    async function getDictionaryWords(url, utters) {
+    async function getDictionaryWords(url, utters, report = 0) {
         //console.log(utters);
         // expects Utters;
         var newArr = [];
@@ -524,15 +532,43 @@ var goFetch = (function () {
                 getDictionaryWordForAffix(res, url).then(res2 => {
 
                     newArr = checkDictionaryWordForAffixes(res2);
-                    console.log(newArr[0]);
+                    //console.log(newArr);
                     dictionaryColourCode(newArr);
 
                 });
             });
 
         }
-
+		
+		if(report ==1){fileReport();}
+		
     }
+	
+	function fileReport(){
+		
+		uniqueArray = [...new Set(
+					  notInDict.filter(item => item !== undefined && item !== "")
+					)];
+					
+			var trimmedArray = uniqueArray.map(str => str.trim());
+			
+			trimmedArray = listOfTriggeredStrings.concat(trimmedArray).join("*8*\n");
+			trimmedArray = trimmedArray.replaceAll(",","");
+			trimmedArray = "t́'θɛlma, hsɔ́\n"+trimmedArray.replaceAll("*8*",",");
+			
+			//console.log(trimmedArray);
+			
+			const numberedListMistakes = document.getElementById('numberedList');
+			numberedListMistakes.disabled = false;
+			
+			numberedListMistakes.addEventListener("click", () => {
+					const loremIpsum =trimmedArray;
+
+					const url = "../TemneGrammarChecker/errorReport.html?data=" + encodeURIComponent(loremIpsum);
+					window.open(url, "_blank", "noopener");
+			});
+		
+	}
 
     return {
 

@@ -5,7 +5,7 @@ var lookForVerbs = (function () {
     function subjectVerbs(book) {
         //expects a string array
         var subjectPronum = lookForPronouns.subjectPronouns();
-        subjectPronum = HelperFunctions.creatArrayFromObjectProperty(subjectPronum, "name")
+        subjectPronum = HelperFunctions.creatArrayFromObjectProperty(subjectPronum, "name");
             //console.log(book);
             return HelperFunctions.filterWordsContainingTextByIndex_WithIgnore
             (book, subjectPronum, 0, "'ɥ");

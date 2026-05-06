@@ -1,13 +1,53 @@
 var lookForNouns = (function () {
 
+	nounCompatability = [
+	{ klass: "rə́'", hates: ["r"], loves:[] },
+	{ klass: "də́'", hates: [], loves:["r"] },
+	{ klass: "tə́'", hates: ["t"], loves:[] },
+	{ klass: "nə́'", hates: [], loves:["t"] },
+	];
+	
+	
+	function filterByNounCompatibility(words, nounCompatability) {
+    const output = [];
+
+    for (const word of words) {
+        let keep = true;
+
+        for (const rule of nounCompatability) {
+            const { klass, hates, loves } = rule;
+
+            // skip if klass is not in the word
+            if (!word.includes(klass)) continue;
+
+            // ❌ reject if any hated element appears
+            if (hates.some(h => word.includes(h))) {
+                keep = false;
+                break;
+            }
+
+            // ❌ reject if any loved element is missing
+            if (loves.some(l => !word.includes(l))) {
+                keep = false;
+                break;
+            }
+        }
+
+        if (keep) output.push(word);
+    }
+
+    return output;
+}
+	
     function definiteNouns(words) {
 		//console.log(words);
+		var wordz = filterByNounCompatibility(words, nounCompatability);
         var definteClasses = [
             "áŋ'", "mə́'", "nə́'",
             "rə́'", "tə́'", "də́'",
             "ɔ́'", "kə́'", "ɛ́'", "ə́ŋ'"];
 			//console.log(HelperFunctions.filterWordsContainingText(words, definteClasses))
-        return HelperFunctions.filterWordsContainingTextByIndex(words, definteClasses,0);
+        return HelperFunctions.filterWordsContainingTextByIndex(wordz, definteClasses,0);
     }
 
     function indefiniteNouns(words) {

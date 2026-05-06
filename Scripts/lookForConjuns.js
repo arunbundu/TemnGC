@@ -9,13 +9,13 @@ var lookForConjunctions = (function () {
         "kaɪkah", "ɔwah", "salatah", "kʌpah", "kəh", "kah",
         "kəməh", "cɛnih", "alih", "ɛntih", "yəh", "sap", "beθeh", "θas",
         "yiɪkah", "βeŋ", "hāŋ", "hāŋ", "θaβeh", "konih", "cɛɪcɛnɛh",
-        "nʌsəh", "laɪsah", "θalɔm", "yɛŋ", "kākeh", "yəh"
+        "nʌsəh", "laɪsah", "θalɔm", "yɛŋ", "kākeh", "yəh","dɛŋih","θaɱbɛh"
     ];
 
     var greetings = ["ʂɛnɛh", "sɛkɛh", "panɛmoh", "piyarih", "mamuh", "θoɪθoh"];
-    var responses = ["ādeh", "ɪkoh", "iyoh", "momoh", "marih", "nāyēh", "nāh", "āŋ", "yawoh","owoh"];
-    var questionatives = ["koh", "toh", "nɛh", "mɔlɔh", "iyah", "kɛnɛh", "dekeh", "rekeh", "yoh"];
-    var loneFunctionatives = ["yaθih", "θāh", "təh", "ŋah", "ɪgɛh", "kkr:", "tkr:", "kkr:", "mah", "θonɔh", "bioh", "mɔ̄dɔh", "ɪnaŋ", "iyāh", "wɔyaŋ"];
+    var responses = ["ādeh", "ɪkoh", "iyoh", "iyah", "momoh", "marih", "nāyēh", "nāh", "āŋ", "yawoh","owoh"];
+    var questionatives = ["koh", "toh", "nɛh", "mɔlɔh", "kɛnɛh", "dekeh", "rekeh", "yoh", "ì à?","ì","à"];
+    var loneFunctionatives = ["yaθih", "θāh", "təh", "ŋah", "ɪgɛh", "kkr:", "tkr:", "kkr:", "mah", "θonɔ̄ŋ", "bioh", "mɔ̄dɔh", "ɪnaŋ", "iyāh", "wɔyaŋ"];
 
     conjunctions = conjunctions.concat(greetings, responses, questionatives, loneFunctionatives);
 
@@ -55,7 +55,8 @@ var lookForConjunctions = (function () {
 
         get: get,
         allConjun: allConjun,
-        getConjunctions: getConjunctions
+        getConjunctions: getConjunctions,
+		questionatives : questionatives
     }
 
 })();

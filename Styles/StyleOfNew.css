@@ -24,8 +24,9 @@ html{
   background-repeat: no-repeat;
   background-size: cover;
   
-
 }
+
+
 
 
 .center{
@@ -179,18 +180,114 @@ span{display: inline;}
       box-shadow: 0 .1rem .1rem black;
 }
 
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.highlight {
+  color: rgba(139, 0, 0, 1);;
+  font-weight: 600;
+  font-variant-numeric: lining-nums;
+}
+
   .highlight, .highlighted {
     transition: background-color 0.5s;
   }
   
   
-.noun-highlight { background-color: #99ffcc; }
-.verb-highlight { background-color: #9999ff; }
-.adjective-highlight { background-color: #ad4809; }
-.pronoun-highlight { background-color: #66ff66; }
-.conjunction-highlight { background-color: #4287f5; }
-.loneletter-highlight { background-color: #669999; }
-.loneaffix-highlight { background-color: #cc33ff; }
-.notindict-highlight { background-color: yellow; }
+.noun-highlight {
+  background-color: rgba(153, 255, 204, 0.3); /* pastel mint, translucent */
+  border-radius: 6px;
+  padding: 2px 4px;
+   color: #000;                 /* black text */
+  font-weight: normal;         /* not bold */
+  font-family: sans-serif;     /* clean, neutral */
+  letter-spacing: normal;
+  text-shadow: none;
+}
+
+.verb-highlight {
+  background-color: rgba(153, 153, 255, 0.3); /* pastel lavender */
+  border-radius: 6px;
+  padding: 2px 4px;
+   color: #000;                 /* black text */
+  font-weight: normal;         /* not bold */
+  font-family: sans-serif;     /* clean, neutral */
+  letter-spacing: normal;
+  text-shadow: none;
+}
+
+.adjective-highlight {
+  background-color: rgba(173, 72, 9, 0.2); /* warm muted orange */
+  border-radius: 6px;
+  padding: 2px 4px;
+   color: #000;                 /* black text */
+  font-weight: normal;         /* not bold */
+  font-family: sans-serif;     /* clean, neutral */
+  letter-spacing: normal;
+  text-shadow: none;
+}
+
+.pronoun-highlight {
+  background-color: rgba(102, 255, 102, 0.2); /* pastel green */
+  border-radius: 6px;
+  padding: 2px 4px;
+   color: #000;                 /* black text */
+  font-weight: normal;         /* not bold */
+  font-family: sans-serif;     /* clean, neutral */
+  letter-spacing: normal;
+  text-shadow: none;
+}
+
+.conjunction-highlight {
+  background-color: rgba(66, 135, 245, 0.2); /* pastel blue */
+  border-radius: 6px;
+  padding: 2px 4px;
+   color: #000;                 /* black text */
+  font-weight: normal;         /* not bold */
+  font-family: sans-serif;     /* clean, neutral */
+  letter-spacing: normal;
+  text-shadow: none;
+}
+
+.loneletter-highlight {
+  background-color: rgba(102, 153, 153, 0.2); /* dusty teal */
+  border-radius: 6px;
+  padding: 2px 4px;
+   color: #000;                 /* black text */
+  font-weight: normal;         /* not bold */
+  font-family: sans-serif;     /* clean, neutral */
+  letter-spacing: normal;
+  text-shadow: none;
+}
+
+.loneaffix-highlight {
+  background-color: rgba(204, 51, 255, 0.2); /* pastel purple */
+  border-radius: 6px;
+  padding: 2px 4px;
+   color: #000;                 /* black text */
+  font-weight: normal;         /* not bold */
+  font-family: sans-serif;     /* clean, neutral */
+  letter-spacing: normal;
+  text-shadow: none;
+}
+
+.notindict-highlight {
+  background-color: rgba(255, 255, 0, 0.7); /* pastel yellow */
+  border-radius: 6px;
+  padding: 2px 4px;
+   color: #000;                 /* black text */
+  font-weight: normal;         /* not bold */
+  font-family: sans-serif;     /* clean, neutral */
+  letter-spacing: normal;
+  text-shadow: none;
+}
+.bigRed{
+	
+  color: rgba(139, 0, 0, 1);;
+  font-weight: 600;
+  font-variant-numeric: lining-nums;
+}
 
 

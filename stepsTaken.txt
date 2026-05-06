@@ -1,27 +1,40 @@
-go get all the raw words and parse them into boxes, using the space as a separator
+go get all the raw words and parse them into boxes, using the space as a separator;
 
-Step 1: Display and Activate Words
+Step 1: Display and Activate Words;
 
-Step 2: Clean and Split Input
+Step 2: Clean and Split Input;
 
-Step 3: Classify Words into Open and Closed Class
+Step 3: Classify Words into Open and Closed Class;
 
-Detect and Colour-Code nouns
+colour by part of speech
+
+Detect and Colour-Code nouns;
 
 verbs
 
-Adjectives
+Adjectives;
 
-Pronouns
+colour by affix
 
-Conjunctions
+look for morphemes... us ɥ for adjectives... words with a ' check after the ' so kɔ and kɔnɔ dont clash in kɔnɔ'mʌ́hkɔhnɛ́;
 
-LoneLetter
+Pronouns;
 
-LoneAffix
+if a closed word contains -q take up to the -q ;
 
- Step 6: Fetch Dictionary Meanings
+Conjunctions;
 
-Fix Lone Affixes
+LoneLetter;
 
-When a verb is just prefixes ie 'téhθá, default to the word tʌkʌ'kɔhnɛ́
+LoneAffix;
+
+colour by root in dictionary
+colour by affix in dictionary
+
+ Step 6: Fetch Dictionary Meanings;
+
+Fix Lone Affixes;
+
+CheckDictionary.. online or local?... root is okay?... affixes are okay?; When a verb is just prefixes ie 'téhθá, default to the word tʌkʌ'kɔhnɛ;
+
+́

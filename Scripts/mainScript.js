@@ -1,7 +1,8 @@
 
-var inputTextBox = document.getElementById('inputTextBox');
+const inputTextBox = document.getElementById('inputTextBox');
 
-var grabTextInputBtn = document.getElementById('grabTextInputBtn');
+const grabTextInputBtn = document.getElementById('grabTextInputBtn');
+
 
 var openClass;
 
@@ -51,15 +52,21 @@ grabTextInputBtn.addEventListener("click", function () {
     var LoneLetter = loneLetter(Conjunctions.left);
     utterances.colourCode("Lone Letter", LoneLetter.lttrs);
 
-    var LoneAffix = loneAffix.getAffixes(LoneLetter.left);
-    utterances.colourCode("Lone Affixes", LoneAffix.affixes);
+    var LoneAffix = loneAffix.getLoneAffixes(LoneLetter.left);
+    utterances.colourCode("Lone Affixes", LoneAffix);
 
     console.log(Nouns, Verbs, Adjectives, Pronouns, Conjunctions, LoneLetter, LoneAffix);
 	
     goFetch.getDictionaryWords(url, Nouns.takeAll);
     goFetch.getDictionaryWords(url, Verbs.takeAll);
-    goFetch.getDictionaryWords(url, Adjectives.adjectives);
-    loneAffix.fixLoneAffixes(LoneAffix.affixes);
+    goFetch.getDictionaryWords(url, Adjectives.adjectives,1);
+    loneAffix.fixLoneAffixes(LoneAffix);
+	
+	
+	var triggeredWindows =neighborHood.markWindowsThatContainTriggers(
+	neighborHood.buildThreeSpanWindows(
+	neighborHood.collectSpans(".highlighted")));
+	
 
 });
 
@@ -156,8 +163,12 @@ Here are the **steps** performed by the code:
 
     * Try to interpret or merge lone affixes with known roots or patterns.
 
-Let me know if you want this as a flowchart or want to generate a visual summary.
 
+now we get to the layer of the words and who they hate to be around (stirng layer at first)
+
+go get the utterance spans
+crack open the span for morphemes
+see if the morphemes like their nieghbors
 
 
 **/

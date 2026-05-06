@@ -1,6 +1,4 @@
 
-
-
 var utterances = (function () {
 
     var allTemneLetters = ["a", "m", "n", "s", "e",
@@ -12,7 +10,7 @@ var utterances = (function () {
         "ə", "ħ", "ʒ", "v", "h",
         "-", "q", "\u0301",
         "\u0300", "\u0305", "\u0020", "\u0304",
-        "'", "ɥ"];
+        "'", "ɥ","/\u030C/"];
 
     var oldColour = "";
 
@@ -78,7 +76,7 @@ var utterances = (function () {
 
     function displayUtterances(div) {
 
-        var displayText = div.innerText.substr(0, 5000);
+        var displayText = div.innerText.substr(0, 5000*2);
         displayText = displayText.split("");
         displayText = HelperFunctions.replaceAllOccurrences(displayText, "\n", '<br/> ');
 
@@ -143,67 +141,93 @@ var utterances = (function () {
     }
 
 
-	
-	function colourCode(section, utterances, sClass = ".highlight") {
+function colourCode(section, utterances, sClass = ".highlight") {
+//take in the utterance tag and find the uttrance span
+
     if (typeof section === "undefined") return;
-	
+
     const spanElements = document.querySelectorAll("span" + sClass);
 
     // Preprocess utterances into a Map for fast lookups
     const utteranceMap = new Map();
     for (let i = 0; i < utterances.length; i++) {
         let cleanUtterance = WordSplitter.wordCleaner(utterances[i]).replace(/\s/g, "");
-		//console.log(cleanUtterance );
         utteranceMap.set(cleanUtterance, i);
     }
 	
 
     spanElements.forEach(span => {
         let cleanSpan = WordSplitter.wordCleaner(span.innerText).replace(/\s/g, "");
-		
-        if (utteranceMap.has(cleanSpan)) {
-            let i = utteranceMap.get(cleanSpan);
-			
-			span.classList.remove("notindict-highlight");
-            // Optional: use classList to apply a class instead of inline styles
-            switch (section) {
-                case "Noun":
-                    span.classList.add("noun-highlight");
-                    span.id = "noun" + i;
-                    break;
-                case "Verb":
-                    span.classList.add("verb-highlight");
-                    span.id = "verb" + i;
-                    break;
-                case "Adjective":
-                    span.classList.add("adjective-highlight");
-                    span.id = "adjective" + i;
-                    break;
-                case "Pronoun":
-                    span.classList.add("pronoun-highlight");
-                    span.id = "pronoun" + i;
-                    break;
-                case "Conjunction":
-                    span.classList.add("conjunction-highlight");
-                    span.id = "conjunction" + i;
-                    break;
-                case "Lone Letter":
-                    span.classList.add("loneletter-highlight");
-                    span.id = "loneLetter" + i;
-                    break;
-                case "Lone Affixes":
-                    span.classList.add("loneaffix-highlight");
-                    span.id = "loneAffix" + i;
-                    break;
-                case "NotInDict":
-                    span.classList.add("notindict-highlight");
-                    break;
-            }
 
-            span.classList.add("highlighted");// override base class
+        if (utteranceMap.has(cleanSpan)) {
+			
+            let i = utteranceMap.get(cleanSpan);
+            span.classList.remove("notindict-highlight");
+
+                applyGrammarColor(span, section, i);
+           
+            span.classList.add("highlighted");
         }
     });
+	
 }
+
+/* ────────────────────────────────
+   NORMAL GRAMMAR COLOURING MODE
+──────────────────────────────── */
+
+function applyGrammarColor(span, section, i) {
+	
+var colourMute = false; // true = no classList.add, false = normal coloring
+
+    switch (section) {
+        case "Noun":
+            if (!colourMute) span.classList.add("noun-highlight");
+            span.id = "noun" + i;
+            break;
+
+        case "Verb":
+            if (!colourMute) span.classList.add("verb-highlight");
+            span.id = "verb" + i;
+            break;
+
+        case "Adjective":
+            if (!colourMute) span.classList.add("adjective-highlight");
+            span.id = "adjective" + i;
+            break;
+
+        case "Pronoun":
+            if (!colourMute) span.classList.add("pronoun-highlight");
+            span.id = "pronoun" + i;
+            break;
+
+        case "Conjunction":
+            if (!colourMute) span.classList.add("conjunction-highlight");
+            span.id = "conjunction" + i;
+            break;
+
+        case "Lone Letter":
+            if (!colourMute) span.classList.add("loneletter-highlight");
+            span.id = "loneLetter" + i;
+            break;
+
+        case "Lone Affixes":
+            if (!colourMute) span.classList.add("loneaffix-highlight");
+            span.id = "loneAffix" + i;
+            break;
+
+        case "NotInDict":
+            span.classList.add("notindict-highlight");
+			notInDict.push(span.innerText);
+			
+            break;
+    }
+}
+
+
+
+
+
 
 
     return {

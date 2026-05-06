@@ -1,0 +1,4 @@
+add the files to git hub first opne git bash on right click
+then git add
+then git commit -m"update dictionary v2"
+then git push

@@ -52,7 +52,7 @@ var morphemes = (function () {
 
             for (var q = words[i].length - 1; q > 0; q--) {
 
-                //console.log(words[i][q].indexOf("\u0300"));
+                //console.log(words[i][q]);
                 //fetch the words after the apostrophe
 				if(words[i][q].indexOf("'") >-1){
 					
@@ -64,7 +64,7 @@ var morphemes = (function () {
 					temp = words2[i][q];
 					//console.log(temp);
 					
-				}
+				}else{ temp ="";}
                 
                 //split the words usng h as delimeter
 				//console.log(temp);
@@ -116,11 +116,14 @@ var morphemes = (function () {
 		//console.log(word);
 		var word2 = JSON.parse(JSON.stringify(word));
         //expects an object
-        var temp = word2.whole;
+        var temp = word2.whole.replace("ɥ","h");
+		temp = temp.includes("'") ? temp.slice(temp.indexOf("'")) : temp;
 
         for (var i = 0; i < word2.affixes.length; i++) {
             //check if the affix is in the word
             if (temp.indexOf(word2.affixes[i]) > -1) {
+				
+				
                 //check for affixes
                 if (temp.indexOf(word2.root[0]) < 0 && i ==0 ) {
 
@@ -134,13 +137,14 @@ var morphemes = (function () {
                 }else if (temp.indexOf(word2.affixes[i]) > temp.indexOf(word2.root[0])) {
 
                     word2.affixes[i] = "h" + word2.affixes[i];
+					
                     //prefixes
                 }
 
             }
 
         }
-
+//console.log(word2);
         return word2;
     }
 

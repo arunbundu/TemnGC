@@ -166,19 +166,25 @@ var lookForPronouns = (function () {
             "person": "first",
             "describe": "subjectAccusational"
         }, {
+            "name": "miŋ'",
+            "class": "",
+            "plurality": "singular",
+            "person": "first",
+            "describe": "subjectAccusational"
+        }, {
             "name": "munɔ'",
             "class": "",
             "plurality": "singular",
             "person": "second",
             "describe": "subjectAccusational"
         }, {
-            "name": "kɔ̄ŋ'",
+            "name": "muŋ'",
             "class": "",
             "plurality": "singular",
-            "person": "third",
+            "person": "second",
             "describe": "subjectAccusational"
         }, {
-            "name": "kɔ̄n'",
+            "name": "kɔŋ'",
             "class": "",
             "plurality": "singular",
             "person": "third",
@@ -208,6 +214,42 @@ var lookForPronouns = (function () {
             "person": "third",
             "describe": "subjectAccusational"
         }, {
+            "name": "min",
+            "class": "",
+            "plurality": "singular",
+            "person": "first",
+            "describe": "objectAccusational/objectLone"
+        }, {
+            "name": "munɔ",
+            "class": "",
+            "plurality": "singular",
+            "person": "second",
+            "describe": "objectAccusational/objectLone"
+        }, {
+            "name": "mun",
+            "class": "",
+            "plurality": "singular",
+            "person": "second",
+            "describe": "objectAccusational/objectLone"
+        }, {
+            "name": "kɔn",
+            "class": "",
+            "plurality": "singular",
+            "person": "third",
+            "describe": "objectAccusational/objectLone"
+        }, {
+            "name": "sa",
+            "class": "",
+            "plurality": "plural",
+            "person": "first",
+            "describe": "objectAccusational/objectLone"
+        },{
+            "name": "sa'",
+            "class": "",
+            "plurality": "plural",
+            "person": "first",
+            "describe": "subjectAccusational"
+        },{
             "name": "minɛ̄ŋ",
             "class": "",
             "plurality": "singular",
@@ -248,7 +290,7 @@ var lookForPronouns = (function () {
             "class": "",
             "plurality": "singular",
             "person": "second",
-            "describe": "subjectProgressiveQuestionative/subjectPerfectum"
+            "describe": "subjectProgressive/subjectPerfectum"
         }, {
             "name": "mɔ'",
             "class": "",
@@ -285,6 +327,12 @@ var lookForPronouns = (function () {
             "plurality": "singular",
             "person": "second",
             "describe": "directAssertative/objective"
+        },{
+            "name": "sa",
+            "class": "",
+            "plurality": "plural",
+            "person": "first",
+            "describe": "directAssertative/objective"
         }, {
             "name": "munɔŋ",
             "class": "",
@@ -304,60 +352,6 @@ var lookForPronouns = (function () {
             "person": "third",
             "describe": "directAssertative/objective"
         }, {
-            "name": "ŋə",
-            "class": "",
-            "plurality": "singular",
-            "person": "third",
-            "describe": "directAssertative/objective"
-        }, {
-            "name": "mə",
-            "class": "",
-            "plurality": "singular",
-            "person": "third",
-            "describe": "directAssertative/objective"
-        }, {
-            "name": "rə",
-            "class": "",
-            "plurality": "singular",
-            "person": "third",
-            "describe": "directAssertative/objective"
-        }, {
-            "name": "tə",
-            "class": "",
-            "plurality": "singular",
-            "person": "third",
-            "describe": "directAssertative/objective"
-        }, {
-            "name": "kə",
-            "class": "",
-            "plurality": "singular",
-            "person": "third",
-            "describe": "directAssertative/objective"
-        }, {
-            "name": "də",
-            "class": "",
-            "plurality": "singular",
-            "person": "third",
-            "describe": "directAssertative/objective"
-        }, {
-            "name": "pə",
-            "class": "",
-            "plurality": "singular",
-            "person": "third",
-            "describe": "directAssertative/objective"
-        }, {
-            "name": "yə",
-            "class": "",
-            "plurality": "singular",
-            "person": "third",
-            "describe": "directAssertative/objective"
-        }, {
-            "name": "nə",
-            "class": "",
-            "plurality": "singular",
-            "person": "third",
-            "describe": "directAssertative/objective"
-        }, {
             "name": "sā'",
             "class": "",
             "plurality": "plural",
@@ -369,162 +363,180 @@ var lookForPronouns = (function () {
             "plurality": "plural",
             "person": "third",
             "describe": "descriptiveObjectAccusational"
+        },{
+            "name": "nāŋ'",
+            "class": "",
+            "plurality": "plural",
+            "person": "second",
+            "describe": "subject/Accusational"
+        },{
+            "name": "nā'h",
+            "class": "",
+            "plurality": "plural",
+            "person": "third",
+            "describe": "descriptiveObjectAccusational"
+        },{
+            "name": "nāŋ'h",
+            "class": "",
+            "plurality": "plural",
+            "person": "second",
+            "describe": "subject/Accusational"
         }, {
             "name": "kɔ",
             "class": "ɔ́'/ù'/'əŋ",
             "plurality": "singular",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/objective"
+            "describe": "infinitive/hypotheticalObjective/objective/objectLone"
         }, {
             "name": "ŋi",
             "class": "ə́ŋ'/ə̀'",
             "plurality": "singular",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/objective"
+            "describe": "infinitive/hypotheticalObjective/objective/objectLone"
         }, {
             "name": "yi",
             "class": "ɛ́'/ɛ̀'/áŋ'/a",
             "plurality": "Plural",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/objective"
+            "describe": "infinitive/hypotheticalObjective/objective/objectLone"
         }, {
             "name": "ri",
             "class": "rə́'/r̀ʌ'/ró'",
             "plurality": "singular",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/objective"
+            "describe": "infinitive/hypotheticalObjective/objective/objectLone"
         }, {
             "name": "ni",
             "class": "nə́'/ǹʌ'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/objective"
+            "describe": "infinitive/hypotheticalObjective/objective/objectLone"
         }, {
             "name": "ki",
             "class": "kə́'/k̀ʌ'/ḱ'",
             "plurality": "singular",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/objective"
+            "describe": "infinitive/hypotheticalObjective/objective/objectLone"
         }, {
             "name": "ti",
             "class": "tə́'/t̀ʌ'/t́'/t'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/objective"
+            "describe": "infinitive/hypotheticalObjective/objective/objectLone"
         }, {
             "name": "pi",
             "class": "pə́'/p̀ʌ'",
             "plurality": "singular",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/objective"
+            "describe": "infinitive/hypotheticalObjective/objective/objectLone"
         }, {
             "name": "ci",
             "class": "",
             "plurality": "singular",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/objective"
+            "describe": "infinitive/hypotheticalObjective/objective/objectLone"
         }, {
             "name": "ŋi",
             "class": "cə́'/c̀ʌ'/ə́ŋ'/ə̀'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/objective"
+            "describe": "infinitive/hypotheticalObjective/objective/objectLone"
         }, {
             "name": "di",
             "class": "də́'/d̀ʌ'",
             "plurality": "singular",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/objective"
+            "describe": "infinitive/hypotheticalObjective/objective/objectLone"
         }, {
             "name": "dɛ",
             "class": "də́'/d̀ʌ'/ALL",
             "plurality": "singular",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/objective"
+            "describe": "infinitive/hypotheticalObjective/objective/objectLone"
         },{
-            "name": "ɱmi",
+            "name": "ɱi",
             "class": "mə́'/m̀ʌ'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/objective"
+            "describe": "infinitive/hypotheticalObjective/objective/objectLone"
         }, {
             "name": "ma",
             "class": "mə́'/m̀ʌ'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "hypotheticalObjective"
+            "describe": "hypotheticalObjective/objectLone"
         }, {
             "name": "ɔwe'",
             "class": "ù'/ɔ́'",
             "plurality": "singular",
             "person": "third",
-            "describe": "discriptional/subject"
+            "describe": "descriptional/subject"
         }, {
             "name": "aŋe'",
             "class": "ɔ́'/áŋ'/à'/cə́'/c̀ʌ'/ə́ŋ'/ə̀'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "discriptional/subject"
+            "describe": "descriptional/subject"
         }, {
             "name": "əŋe'",
             "class": "ə́ŋ'/ə̀'",
             "plurality": "singular",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional/subject"
         }, {
             "name": "ɛye'",
             "class": "ɛ́'/ɛ̀'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional/subject"
         }, {
             "name": "əre'",
             "class": "rə́'/r̀ʌ'/ró'",
             "plurality": "singular",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional/subject"
         }, {
             "name": "əne'",
             "class": "nə́'/ǹʌ'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional/subject"
         }, {
             "name": "əke'",
             "class": "kə́'/k̀ʌ'/ḱ'",
             "plurality": "singular",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional/subject"
         }, {
             "name": "əte'",
             "class": "tə́'/t̀ʌ'/t́'/t'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional/subject"
         }, {
             "name": "əpe'",
             "class": "pə́'/p̀ʌ'",
             "plurality": "singular",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional/subject"
         }, {
             "name": "aŋe'",
             "class": "cə́'/c̀ʌ'/ə́ŋ'/ə̀'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional/subject"
         }, {
             "name": "əde'",
             "class": "də́'/d̀ʌ'",
             "plurality": "singular",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional/subject"
         }, {
             "name": "əme'",
             "class": "mə́'/m̀ʌ'",
             "plurality": "singular",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/stubjective"
+            "describe": "infinitive/hypotheticalObjective/stubjective/subject"
         }, {
             "name": "ɱme'",
             "class": "mə́'/m̀ʌ'",
@@ -542,79 +554,79 @@ var lookForPronouns = (function () {
             "class": "ù/ɔ́",
             "plurality": "singular",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional"
         }, {
             "name": "aŋe",
             "class": "ɔ́'/áŋ'/à'/cə́'/c̀ʌ'/ə́ŋ'/ə̀'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional"
         }, {
             "name": "əŋe",
             "class": "ə́ŋ'/ə̀'",
             "plurality": "singular",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional"
         }, {
             "name": "ɛye",
             "class": "ɛ́'/ɛ̀'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional"
         }, {
             "name": "əre",
             "class": "rə́'/r̀ʌ'/ró'",
             "plurality": "singular",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional"
         }, {
             "name": "əne",
             "class": "nə́'/ǹʌ'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional"
         }, {
             "name": "əke",
             "class": "kə́'/k̀ʌ'/ḱ'",
             "plurality": "singular",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional"
         }, {
             "name": "əte",
             "class": "tə́'/t̀ʌ'/t́'/t'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional"
         }, {
             "name": "əpe",
             "class": "pə́'/p̀ʌ'",
             "plurality": "singular",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional"
         }, {
             "name": "aŋe",
             "class": "cə́'/c̀ʌ'/ə́ŋ'/ə̀'",
             "plurality": "Plural",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional"
         }, {
             "name": "əde",
             "class": "də́'/d̀ʌ'",
             "plurality": "singular",
             "person": "third",
-            "describe": "discriptiona/subject"
+            "describe": "descriptional"
         }, {
             "name": "əme",
             "class": "mə́'/m̀ʌ'",
             "plurality": "singular",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/stubjective"
+            "describe": "descriptional"
         }, {
             "name": "ɱme",
             "class": "mə́'/m̀ʌ'",
             "plurality": "singular",
             "person": "third",
-            "describe": "infinitive/hypotheticalObjective/stubjective"
+            "describe": "descriptional"
         }, {
             "name": "ɔwɔŋ",
             "class": "ù'/ɔ́'",
@@ -634,7 +646,7 @@ var lookForPronouns = (function () {
             "person": "third",
             "describe": "locational/closeRelativePositional"
         }, {
-            "name": "ɛyɛŋ",
+            "name": "ɛyəŋ",
             "class": "ɛ́'/ɛ̀'",
             "plurality": "Plural",
             "person": "third",
@@ -850,7 +862,7 @@ var lookForPronouns = (function () {
             "person": "third",
             "describe": "simoultaniousalState/subjectAccusational"
         }, {
-            "name": "kɔ̄n'",
+            "name": "kɔŋ'",
             "class": "ɔ́'/ù'/'əŋ",
             "plurality": "singular",
             "person": "third",
@@ -1076,7 +1088,7 @@ var lookForPronouns = (function () {
             "class": "ɛ́'/ɛ̀'",
             "plurality": "undefined",
             "person": "undefined",
-            "describe": "accusational"
+            "describe": "objectivalPronounPosessives/accusational"
         }, {
             "name": "'hkə",
             "class": "ù'/ɔ́'/kə́'/k̀ʌ'/ḱ'",
@@ -1144,7 +1156,7 @@ var lookForPronouns = (function () {
             "person": "undefined",
             "describe": "objectivalPronounPosessives/objectivalPronounSingular/objectivalPronounFirstPerson/objectivalPronounSecondPerson/objectivalPronounPlural"
         }, {
-            "name": "'hɔkə",
+            "name": "'həkə",
             "class": "ù'/ɔ́'",
             "plurality": "undefined",
             "person": "undefined",
@@ -1354,30 +1366,6 @@ var lookForPronouns = (function () {
             "person": "undefined",
             "describe": "numerical"
         }, {
-            "name": "'htamaθukin",
-            "class": "ɔ́'/áŋ'/à'/cə́'/c̀ʌ'/ə́ŋ'/ə̀'/aŋ'/a'",
-            "plurality": "undefined",
-            "person": "undefined",
-            "describe": "numerical"
-        }, {
-            "name": "'htamaθuyɛrʌŋ",
-            "class": "ɔ́'/áŋ'/à'/cə́'/c̀ʌ'/ə́ŋ'/ə̀'/aŋ'/a'",
-            "plurality": "undefined",
-            "person": "undefined",
-            "describe": "numerical"
-        }, {
-            "name": "'htamaθusas",
-            "class": "ɔ́'/áŋ'/à'/cə́'/c̀ʌ'/ə́ŋ'/ə̀'/aŋ'/a'",
-            "plurality": "undefined",
-            "person": "undefined",
-            "describe": "numerical"
-        }, {
-            "name": "'htamaθuyaɪlɛ",
-            "class": "ɔ́'/áŋ'/à'/cə́'/c̀ʌ'/ə́ŋ'/ə̀'/aŋ'/a'",
-            "plurality": "undefined",
-            "person": "undefined",
-            "describe": "numerical"
-        }, {
             "name": "'hŋin",
             "class": "ə́ŋ'/ə̀'/əŋ'/ə'",
             "plurality": "undefined",
@@ -1498,13 +1486,13 @@ var lookForPronouns = (function () {
             "person": "undefined",
             "describe": "numerical"
         }, {
-            "name": "miŋ'h",
+            "name": "mīŋ'h",
             "class": "undefined",
             "plurality": "undefined",
             "person": "undefined",
             "describe": "undefined"
         }, {
-            "name": "muŋ'h",
+            "name": "mūŋ'h",
             "class": "undefined",
             "plurality": "undefined",
             "person": "undefined",
@@ -1516,7 +1504,31 @@ var lookForPronouns = (function () {
             "person": "undefined",
             "describe": "undefined"
         }, {
-            "name": "kɔŋ'h",
+            "name": "sāŋ'h",
+            "class": "undefined",
+            "plurality": "undefined",
+            "person": "undefined",
+            "describe": "undefined"
+        },{
+            "name": "nāŋ'h",
+            "class": "undefined",
+            "plurality": "undefined",
+            "person": "undefined",
+            "describe": "undefined"
+        }, {
+            "name": "ŋā'h",
+            "class": "undefined",
+            "plurality": "undefined",
+            "person": "undefined",
+            "describe": "undefined"
+        },{
+            "name": "ŋāŋ'h",
+            "class": "undefined",
+            "plurality": "undefined",
+            "person": "undefined",
+            "describe": "undefined"
+        },{
+            "name": "kɔ̄ŋ'h",
             "class": "undefined",
             "plurality": "undefined",
             "person": "undefined",
@@ -1689,10 +1701,247 @@ var lookForPronouns = (function () {
             "plurality": "undefined",
             "person": "undefined",
             "describe": "undefined"
+        }, {
+            "name": "ŋi'h",
+            "class": "ə́ŋ'/ə̀'",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "yi'h",
+            "class": "ɛ́'/ɛ̀'/áŋ'/a",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ri'h",
+            "class": "rə́'/r̀ʌ'/ró'",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ni'h",
+            "class": "nə́'/ǹʌ'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ki'h",
+            "class": "kə́'/k̀ʌ'/ḱ'",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ti'h",
+            "class": "tə́'/t̀ʌ'/t́'/t'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "pi'h",
+            "class": "pə́'/p̀ʌ'",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ci'h",
+            "class": "",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ŋi'h",
+            "class": "cə́'/c̀ʌ'/ə́ŋ'/ə̀'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "di'h",
+            "class": "də́'/d̀ʌ'",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        },{
+            "name": "ɱi'h",
+            "class": "mə́'/m̀ʌ'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ma'h",
+            "class": "mə́'/m̀ʌ'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ɔwe'h",
+            "class": "ù'/ɔ́'",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "aŋe'h",
+            "class": "ɔ́'/áŋ'/à'/cə́'/c̀ʌ'/ə́ŋ'/ə̀'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "əŋe'h",
+            "class": "ə́ŋ'/ə̀'",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ɛye'h",
+            "class": "ɛ́'/ɛ̀'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "əre'h",
+            "class": "rə́'/r̀ʌ'/ró'",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "əne'h",
+            "class": "nə́'/ǹʌ'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "əke'h",
+            "class": "kə́'/k̀ʌ'/ḱ'",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "əte'h",
+            "class": "tə́'/t̀ʌ'/t́'/t'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "əpe'h",
+            "class": "pə́'/p̀ʌ'",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "aŋe'h",
+            "class": "cə́'/c̀ʌ'/ə́ŋ'/ə̀'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "əde'h",
+            "class": "də́'/d̀ʌ'",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "əme'h",
+            "class": "mə́'/m̀ʌ'",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ɱme'h",
+            "class": "mə́'/m̀ʌ'",
+            "plurality": "singular",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ma'h",
+            "class": "mə́'/m̀ʌ'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ɔwɔŋ'h",
+            "class": "ù'/ɔ́'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "aŋəŋ'h",
+            "class": "ɔ́'/áŋ'/à'/cə́'/c̀ʌ'/ə́ŋ'/ə̀'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "əŋəŋ'h",
+            "class": "ə́ŋ'/ə̀'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ɛyəŋ'h",
+            "class": "ɛ́'/ɛ̀'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ərəŋ'h",
+            "class": "rə́'/r̀ʌ'/ró'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        },{
+            "name": "ədəŋ'h",
+            "class": "də́'/d̀ʌ'/dó'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        },  {
+            "name": "ənəŋ'h",
+            "class": "nə́'/ǹʌ'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "əkəŋ'h",
+            "class": "kə́'/k̀ʌ'/ḱ'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "ətəŋ'h",
+            "class": "tə́'/t̀ʌ'/t́'/t'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "əpəŋ'h",
+            "class": "pə́'/p̀ʌ'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "aŋəŋ'h",
+            "class": "cə́'/c̀ʌ'/ə́ŋ'/ə̀'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "əŋəŋ'h",
+            "class": "cə́'/c̀ʌ'/ə́ŋ'/ə̀'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
+        }, {
+            "name": "əməŋ'h",
+            "class": "mə́'/m̀ʌ'",
+            "plurality": "Plural",
+            "person": "third",
+            "describe": ""
         }
     ]
 
-    function get(tex) {
+    
+	
+	
+	function get(tex) {
 
         for (var i = 0; i < pronouns.length; i++) {
 
@@ -1706,14 +1955,55 @@ var lookForPronouns = (function () {
         return "n/a";
 
     }
+	
+	
+	
+	
+	
+	function getPronounsArrayByDescribeType(type) {
 
-    function subjectPronouns() {
+        var sult = HelperFunctions.flattenArrayByAttribute(
+							HelperFunctions.createSubsectionArrayForObjects(
+							pronouns,"describe", type
+							),
+							"name");
+
+        return sult;
+    }
+	
+	
+	
+	
+	function getPronounsArrayByClassType(type) {
+
+        var sult = HelperFunctions.flattenArrayByAttribute(
+							HelperFunctions.createSubsectionArrayForObjects(
+							pronouns,"class", type
+							),
+							"name");
+
+        return sult;
+    }
+
+    
+	
+	function subjectPronouns() {
 
         var subjectProunouns = HelperFunctions
             .createSubsectionArrayForObjects(pronouns,
                 "describe", "subject");
 
         return subjectProunouns;
+    }
+	
+	
+	function allAdjs() {
+
+        var themAdjectives = HelperFunctions
+            .createSubsectionArrayForObjects(pronouns,
+                "name", "'h");
+
+        return themAdjectives;
     }
 	
 	function allPronum(){
@@ -1737,7 +2027,11 @@ var lookForPronouns = (function () {
         get: get,
         subjectPronouns: subjectPronouns,
 		allPronum : allPronum,
-		getPronouns : getPronouns
+		getPronouns : getPronouns,
+		allAdjs : allAdjs,
+		pronouns : pronouns,
+		getPronounsArrayByDescribeType : getPronounsArrayByDescribeType,
+		getPronounsArrayByClassType : getPronounsArrayByClassType
     }
 
 })();

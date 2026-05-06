@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>h'bɛnθɛŋ 'hə 'tʌmʌr mə́'pʌnɛ</title>
+  <link rel="stylesheet" href="Styles\styleOfCsvToTable.css">
+</head>
+
+<body>
+  <div class="app">
+    <div class="top">
+      <h1>h'bɛnθɛŋ 'hə 'tʌmʌr mə́'pʌnɛ</h1>
+
+      <div class="controls">
+        <textarea id="csvInput" placeholder="Paste CSV here..."></textarea>
+
+        <div class="row">
+          <button class="primary" id="renderBtn">'tɔri ə́ŋ'bɛnθɛŋ</button>
+          <button id="sampleBtn">'tɔri m̀ʌ'θamaʂeri</button>
+          <button class="danger" id="clearBtn">'naʂi 'hbɛ̄</button>
+
+          <span class="spacer"></span>
+
+          <label class="file" for="fileInput" title="Load a .csv file">'βephə́ ə̀'reka 'hŋa (csv)</label>
+          <input id="fileInput" type="file" accept=".csv,text/csv" />
+
+          <label class="checkbox" title="Treat first row as table headers">
+            <input id="headerToggle" type="checkbox" checked />
+            kə́'βanθ 'rɛn ró'kɔm kə'ba mə́'bona
+          </label>
+        </div>
+
+        <div class="meta">
+          <span class="pill" id="stats">tə́'βanθ 'rɛn: 0 • ɛ́'θaɪk: 0</span>
+          <span class="error" id="error"></span>
+        </div>
+      </div>
+
+      <div class="hint">
+        ə̀'tʌp: mɔh ɪ'naʂi əte'yi kah ə́ŋ'bɛnθɛŋ è, ɪ'naʂihsɔ́ əte'yi kah mə́'βal 'hma ró'kɔm
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div id="tableHost"></div>
+    </div>
+  </div>
+
+
+  <script src="Scripts\csvToTable.js"></script>
+  
+</body>
+</html>

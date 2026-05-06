@@ -5,6 +5,7 @@ var HelperFunctions = (function () {
     function filterWordsContainingText(array1, searchArray) {
 		//expects an array not a string
 		//console.log(array1);
+		//arr1 is bigspoon
         var newArray = [];
         var tempArr = JSON.parse(JSON.stringify(array1));
         for (var i = 0; i < tempArr.length; i++) {
@@ -31,8 +32,11 @@ var HelperFunctions = (function () {
         var tempArr = JSON.parse(JSON.stringify(array));
         for (var i = 0; i < tempArr.length; i++) {
             for (var j = 0; j < searchArray.length; j++) {
+				
                 if (tempArr[i].indexOf(searchArray[j], index) === index) {
+					//console.log(tempArr[i],searchArray[j]);
                     newArray.push(tempArr[i]);
+					
                     tempArr.splice(i, 1);
                     i--;
                     break;
@@ -92,18 +96,23 @@ var HelperFunctions = (function () {
         };
     }
 
-    function filterWordsContainingTextWithInterval(array, searchArray, startIndex, endIndex) {
+    function filterWordsContainingTextWithInterval(littleSpoon, bigSpoon, startIndex, endIndex) {
         var newArray = [];
-        var tempArr = JSON.parse(JSON.stringify(array));
-        for (var i = 0; i < tempArr.length; i++) {
-            for (var j = 0; j < searchArray.length; j++) {
-                var index = tempArr[i].indexOf(searchArray[j], startIndex);
-                //console.log(tempArr[i], searchArray[j],index)
+		//console.log("lil",littleSpoon, littleSpoon.length, "biggie", bigSpoon);
+        var tempArr = JSON.parse(JSON.stringify(littleSpoon));
+		
+        for (var j = 0; j < bigSpoon.length; j++) {
+
+            for (var i = 0; i < tempArr.length; i++) {
+				
+				var index = tempArr[i].indexOf(bigSpoon[j], startIndex);
+				
                 if (index > -1 && index <= endIndex) {
+					//console.log(tempArr[i], bigSpoon[j],index,"jIndex", j);
                     newArray.push(tempArr[i]);
                     tempArr.splice(i, 1);
                     i--;
-                    break;
+                   
                 }
             }
         }
@@ -114,6 +123,68 @@ var HelperFunctions = (function () {
             old: tempArr
         };
     }
+	
+	
+	function filterWordsContainingTextByPropBigSpoon(array1, searchArray, prop) {
+    // array1: array of objects
+    // searchArray: array of strings to search for
+    // prop: object property name that contains the text
+
+    var newArray = [];
+    var tempArr = JSON.parse(JSON.stringify(array1));
+
+    for (var i = 0; i < tempArr.length; i++) {
+        var value = tempArr[i][prop];
+
+        if (typeof value !== "string") continue;
+
+        for (var j = 0; j < searchArray.length; j++) {
+            if (value.includes(searchArray[j])) {
+                newArray.push(tempArr[i]);
+                tempArr.splice(i, 1);
+                i--;
+                break;
+            }
+        }
+    }
+
+    return {
+        nuvo: newArray,
+        old: tempArr
+    };
+}
+
+function filterWordsContainingTextByPropSmallSpoon(array1, searchArray, prop) {
+    // array1: array of strings (big spoon)
+    // searchArray: array of objects (small spoon)
+    // prop: property on small spoon objects to search with
+
+    var newArray = [];
+    var tempArr = JSON.parse(JSON.stringify(searchArray)); // copy SMALL spoon
+
+    for (var j = 0; j < tempArr.length; j++) {
+        var needle = tempArr[j] && tempArr[j][prop];
+        if (typeof needle !== "string") continue;
+
+        for (var i = 0; i < array1.length; i++) {
+            var text = array1[i];
+            if (typeof text !== "string") continue;
+
+            if (text.includes(needle)) {
+                newArray.push(tempArr[j]); // pass OUT small spoon item
+                tempArr.splice(j, 1);      // remove from small spoon
+                j--;
+                break;
+            }
+        }
+    }
+
+    return {
+        nuvo: newArray, // matched SMALL spoon objects
+        old: tempArr    // unmatched SMALL spoon objects
+    };
+}
+
 
     function removeCharacters(text, unwantedCharacters) {
         for (var i = 0; i < unwantedCharacters.length; i++) {
@@ -133,6 +204,29 @@ var HelperFunctions = (function () {
 
         return newText;
     }
+	
+		function removeDoubleSpacesFromArrayElements(arr) {
+		if (!Array.isArray(arr)) return arr;
+
+		var cleaned = [];
+
+		for (var i = 0; i < arr.length; i++) {
+			var str = arr[i];
+
+			if (typeof str !== "string") {
+				cleaned.push(str);
+				continue;
+			}
+
+			while (str.indexOf("  ") !== -1) {
+				str = str.replace("  ", " ");
+			}
+
+			cleaned.push(str);
+		}
+
+		return cleaned;
+	}
 
     function createSubsectionArrayForObjects(inputArray, key, value) {
         var newArr = [];
@@ -146,7 +240,7 @@ var HelperFunctions = (function () {
     }
 
     function creatArrayFromObjectProperty(arr, property) {
-        newArr = []
+        var newArr = []
         for (var i = 0; i < arr.length; i++) {
 
             newArr.push(arr[i][property]);
@@ -161,6 +255,7 @@ var HelperFunctions = (function () {
         var startIndex = 0;
         var delimiterIndex;
         var str8 = copyString(str);
+		//console.log(str);
         while ((delimiterIndex = str8.indexOf(delimiter, startIndex)) != -1) {
 
             result.push(str8.slice(startIndex, delimiterIndex));
@@ -207,6 +302,7 @@ var HelperFunctions = (function () {
          * @param {array} arr the array providing items to check for in the haystack.
          * @return {boolean} true|false if haystack contains at least one item from arr.
          */
+		 console.log(haystack,arr);
         return arr.some(function (v) {
             return haystack.indexOf(v) >= 0;
         });
@@ -253,6 +349,28 @@ var HelperFunctions = (function () {
         const resultArray = arr.map(item => {
             if (typeof item === 'string') {
                 return item + str;
+            } else {
+                return item;
+            }
+        });
+
+        return resultArray;
+    }
+	
+	 function addStringToArrayItemsLeft(arr, str) {
+        // Check if the input is valid
+        if (!Array.isArray(arr)) {
+            throw new Error('The first argument must be an array');
+        }
+
+        if (typeof str !== 'string') {
+            throw new Error('The second argument must be a string');
+        }
+
+        // Map over each item in the array and add the string
+        const resultArray = arr.map(item => {
+            if (typeof item === 'string') {
+                return str + item;
             } else {
                 return item;
             }
@@ -308,17 +426,34 @@ var HelperFunctions = (function () {
         // If no item is found to the right of string2, return false
         return false;
     }
+	
+	function countSubstring(haystack, needle) {
+		//expects a single string for both
+    if (typeof haystack !== "string" || typeof needle !== "string") return 0;
+    if (needle === "") return 0;
 
-    function replaceAllOccurrences(arr, itemToReplace, newItem) {
-        for (let i = 0; i < arr.length; i++) {
-            if (typeof arr[i] === 'string') {
-                while (arr[i].includes(itemToReplace)) {
-                    arr[i] = arr[i].replace(itemToReplace, newItem);
-                }
-            }
-        }
-        return arr;
+    var count = 0;
+    var index = 0;
+
+    while (true) {
+        index = haystack.indexOf(needle, index);
+        if (index === -1) break;
+
+        count++;
+        index += needle.length; // move past this match
     }
+
+    return count;
+}
+
+   function replaceAllOccurrences(arr, itemToReplace, newItem) {
+    for (let i = 0; i < arr.length; i++) {
+        if (typeof arr[i] === "string") {
+            arr[i] = arr[i].split(itemToReplace).join(newItem);
+        }
+    }
+    return arr;
+}
 
     function exists(obj) {
 
@@ -454,7 +589,12 @@ var HelperFunctions = (function () {
         copyString: copyString,
 
         arrReplaceAll: arrReplaceAll,
-        separateIndexes: separateIndexes
+        separateIndexes: separateIndexes,
+		removeDoubleSpacesFromArrayElements : removeDoubleSpacesFromArrayElements,
+		countSubstring: countSubstring,
+		addStringToArrayItemsLeft : addStringToArrayItemsLeft,
+		filterWordsContainingTextByPropSmallSpoon : filterWordsContainingTextByPropSmallSpoon,
+		filterWordsContainingTextByPropBigSpoon : filterWordsContainingTextByPropBigSpoon
 
     }
 
